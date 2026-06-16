@@ -2,14 +2,20 @@
 
     <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@900&display=swap" rel="stylesheet">
 
-    <style>
-        body {
-            background: linear-gradient(180deg, #74b9ff 0%, #dfefff 60%, #ffffff 100%);
-            background-attachment: fixed;
-            min-height: 100vh;
-            margin: 0;
-            padding: 0;
-        }
+   <style>
+ body {
+  background-image: url('/images/fundo1.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  font-family: 'Merriweather', serif;
+}
+
         
         h2,
         p {
@@ -24,33 +30,40 @@
             margin-top: 0;
             margin-bottom: 20px;
         }
-        /* CLASSE NOVA: Criada especificamente para o título gigante de boas-vindas */
+        /* CLASSE RESTAURADA: Voltou ao tamanho original de 80px e peso 1000 */
         
         .titulo-principal {
-            font-size: 80px;
+            font-size: 80px; 
             color: #6dbdff;
             font-family: 'Merriweather', serif;
             font-weight: 1000;
             letter-spacing: 1px;
-            padding: 20px;
+            padding: 20px 40px;
             background-color: #104488;
-            width: 100%;
-            max-width: 100vw;
+            display: inline-block; 
+            margin: 0 auto 20px auto;
             border-radius: 20px;
-            display: inline-block;
             box-sizing: border-box;
         }
         
-        p {
-            max-width: 700px;
-            margin: 10px auto;
-            line-height: 1.5;
-            font-size: 18px;
-            font-weight: bold;
+        /* CLASSE ALTERADA: Largura máxima aumentada horizontalmente para 1100px */
+        .hero {
+            padding: 40px 50px;
+            background: rgba(255, 255, 255, 0.95); 
+            max-width: 1100px;
+            margin: 40px auto;
+            border-radius: 25px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+            text-align: center;
         }
         
-        .hero {
-            padding-top: 40px;
+        p {
+            max-width: 850px; /* Ajustado proporcionalmente ao tamanho do bloco de trás */
+            margin: 20px auto;
+            line-height: 1.6;
+            font-size: 18px;
+            font-weight: normal; 
+            color: #222;
         }
         
         .home {
@@ -190,18 +203,16 @@
             max-width: 100%;
             height: auto;
             width: 350px;
-            /* Você pode aumentar ou diminuir esse valor para ajustar o tamanho na tela */
             border-radius: 12px;
-            /* Deixa as bordas levemente arredondadas, combinando com o resto do site */
         }
     </style>
 
     <section class="hero">
         <div class="container">
-            <h2 class="titulo-principal">Bem-vindo ao Fixly!</h2>
+            <h2 class="titulo-principal">Bem-vindo ao Tastefy!</h2>
         </div>
         <div class="imagem-container">
-            <img src="/images/fixlyseta.png" alt="Ilustração Fixly" class="imagem-hero">
+            <img src="/images/tastefyseta.png" alt="Ilustração Tastefy" class="imagem-hero">
         </div>
         <p>
             Nós somos uma plataforma baseada no método de estudo de flashcards, desenvolvido com o intuito de tornar a aprendizagem mais rápida e prática. O site permite que o usuário crie flashcards para revisar conteúdos de forma dinâmica pra facilitar a memorização,
@@ -278,7 +289,6 @@
             }
 
             try {
-                // Efetuando o pedido usando rota relativa para garantir compatibilidade local e produção
                 const respostaServidor = await fetch("/flashcards", {
                     method: "POST",
                     headers: {
@@ -288,14 +298,13 @@
                         pergunta,
                         resposta
                     }),
-                    credentials: "include" // 👈 INDISPENSÁVEL: Força o envio dos cookies da sessão activa
+                    credentials: "include"
                 });
 
                 const data = await respostaServidor.json();
 
                 if (respostaServidor.ok) {
                     alert(data.msg || "Flashcard adicionado com sucesso!");
-                    // Limpa os campos após salvar com sucesso
                     questionInput.value = "";
                     answerInput.value = "";
                 } else {
@@ -313,176 +322,3 @@
             saveCardBtn.addEventListener("click", salvarFlashcard);
         }
     </script>
-
-    <h1>Flashcards Públicos</h1>
-
-    <h1 class="materia-titulo">Linguagens</h1>
-    <div class="cards">
-        <% flashcards.filter(card => card.materia === 'Linguagens').forEach(card => { %>
-            <div class="card">
-                <h2>
-                    <%= card.pergunta %>
-                </h2>
-
-                <button onclick="toggleResposta(this)">
-                Mostrar resposta
-            </button>
-
-                <p class="resposta" style="display:none;">
-                    <%= card.resposta %>
-                </p>
-            </div>
-            <% }) %>
-    </div>
-
-    <h1 class="materia-titulo">Matemática</h1>
-    <div class="cards">
-        <% flashcards.filter(card => card.materia === 'Matemática').forEach(card => { %>
-            <div class="card">
-                <h2>
-                    <%= card.pergunta %>
-                </h2>
-
-                <button onclick="toggleResposta(this)">
-                Mostrar resposta
-            </button>
-
-                <p class="resposta" style="display:none;">
-                    <%= card.resposta %>
-                </p>
-            </div>
-            <% }) %>
-    </div>
-
-    <h1 class="materia-titulo">Ciências Humanas</h1>
-    <div class="cards">
-        <% flashcards.filter(card => card.materia === 'Ciências Humanas').forEach(card => { %>
-            <div class="card">
-                <h2>
-                    <%= card.pergunta %>
-                </h2>
-
-                <button onclick="toggleResposta(this)">
-                Mostrar resposta
-            </button>
-
-                <p class="resposta" style="display:none;">
-                    <%= card.resposta %>
-                </p>
-            </div>
-            <% }) %>
-    </div>
-
-    <h1 class="materia-titulo">Ciências da Natureza</h1>
-    <div class="cards">
-        <% flashcards.filter(card => card.materia === 'Ciências da Natureza').forEach(card => { %>
-            <div class="card">
-                <h2>
-                    <%= card.pergunta %>
-                </h2>
-
-                <button onclick="toggleResposta(this)">
-                Mostrar resposta
-            </button>
-
-                <p class="resposta" style="display:none;">
-                    <%= card.resposta %>
-                </p>
-            </div>
-            <% }) %>
-    </div>
-    <style>
-        .cards {
-            display: flex;
-            gap: 20px;
-            flex-wrap: wrap;
-            justify-content: center;
-            margin-top: 30px;
-            margin-bottom: 40px;
-        }
-        
-        .card {
-            background: white;
-            color: #104488;
-            padding: 20px;
-            border-radius: 15px;
-            width: 250px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            transition: 0.2s;
-        }
-        
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-        }
-        
-        .card h2 {
-            color: #007bff;
-            font-size: 22px;
-            margin-bottom: 10px;
-        }
-        
-        .card p {
-            color: #333;
-            font-size: 16px;
-            text-align: left;
-        }
-        
-        .materia-titulo {
-            text-align: center;
-            color: #104488;
-            margin-top: 50px;
-            margin-bottom: 20px;
-            font-family: 'Merriweather', serif;
-        }
-        
-        .card button {
-            background: #007bff;
-            color: white;
-            border: none;
-            padding: 10px;
-            border-radius: 8px;
-            cursor: pointer;
-            margin-top: 10px;
-            font-weight: bold;
-        }
-        
-        .card button:hover {
-            background: #005ecb;
-        }
-        
-        .resposta {
-            margin-top: 15px;
-            padding: 10px;
-            background: #eaf4ff;
-            border-radius: 8px;
-            color: #104488;
-        }
-        
-        e body {
-            font-family: Arial, sans-serif;
-        }
-    </style>
-
-    <script>
-        function toggleResposta(botao) {
-
-            const resposta =
-                botao.parentElement.querySelector(".resposta");
-
-            if (resposta.style.display === "none") {
-
-                resposta.style.display = "block";
-                botao.innerText = "Ocultar resposta";
-
-            } else {
-
-                resposta.style.display = "none";
-                botao.innerText = "Mostrar resposta";
-
-            }
-        }
-    </script>
-
-    <%- include('partials/footer') %>
-        <%- include('partials/footer') %>
