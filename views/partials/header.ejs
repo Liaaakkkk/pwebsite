@@ -10,13 +10,16 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
     <link rel="stylesheet" href="/stylesheets/index.css">
 
+
     <style>
-        body {
-            background: #f5f7fb;
-        }
-        
+     body {
+    margin: 0 !important;
+    padding: 0 !important;
+    background: none !important; /* Remove o #f5f7fb que estava cobrindo tudo */
+}
+
         .ui.menu {
-            background: linear-gradient(135deg, #54aaff, #54aaff) !important;
+            background: linear-gradient(135deg, #186f1b, #186f1b) !important;
             border: none !important;
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
             padding: 5px;
@@ -112,13 +115,13 @@
 
             <a class="item" href="/">Início</a>
             <a class="item" href="/about">Sobre</a>
-            <a class="item" href="/signup">Inscreva-se</a>
-            <a class="item" href="/login">Entrar</a>
             <a class="item" href="/flashcards">Criar Flashcards</a>
+            <a class="item" href="/login">Entrar</a>
+            <a class="item" href="/signup">Inscreva-se</a>
             <a class="item" href="/profile">Meu Perfil</a>
 
             <div class="right menu">
-                <div class="item" style="padding-dash: 0; padding-right: 0;">
+                <div class="item" style= "padding-left: 0; padding-right: 0;">
                     <img class="nav-logo-direita" src="/images/fixlyseta.png" alt="Ícone Direita">
                 </div>
 

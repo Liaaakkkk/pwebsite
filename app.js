@@ -1,5 +1,18 @@
 require("dotenv").config();
 
+const dns = require("dns");
+
+// Prioriza IPv4
+dns.setDefaultResultOrder("ipv4first");
+
+// DNS públicos
+dns.setServers([
+  "8.8.8.8",
+  "8.8.4.4",
+  "1.1.1.1",
+  "1.0.0.1"
+]);
+
 var express = require('express');
 var path = require('path');
 var session = require('express-session');

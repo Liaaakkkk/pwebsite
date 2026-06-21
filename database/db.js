@@ -2,13 +2,13 @@ const mongoose = require("mongoose");
 
 const connectDatabase = async () => {
   try {
-    await mongoose.connect
-    (
-        "mongodb+srv://alencarlins07_db_user:F0YPLShMmprajh3V@cluster0.fy8jfr9.mongodb.net/?appName=Cluster0" );
+    console.log("Tentando conectar...");
 
-    console.log("Banco de dados conectado com sucesso");
+    await mongoose.connect(process.env.MONGODB_URI);
+
+    console.log("Banco conectado com sucesso");
   } catch (err) {
-    console.log("Erro ao tentar conectar ao banco de dados:", err);
+    console.error(err);
   }
 };
 
