@@ -1,17 +1,24 @@
 <%- include('partials/header', { title: 'Signup' }) %>
 
 <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght=900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
 
-<style>
-body {
-  background: linear-gradient(180deg, #74b9ff 0%, #dfefff 60%, #ffffff 100%);
-  background-attachment: fixed; 
-  min-height: 100vh;
-  margin: 0;
-  padding: 0;
-  font-family: sans-serif;
+  <style>
+ body {
+  background-image: url('/images/fundoo.png') !important;
+  background-size: cover !important;
+  background-position: top center !important;
+  background-repeat: no-repeat !important;
+  background-attachment: fixed !important;
+  min-height: 100vh !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  font-family: 'fredoka', serif;
 }
-
+.hero {
+    min-height: auto;
+    padding-top: 90px;
+}
 h2,
 p {
   text-align: center;
@@ -20,7 +27,7 @@ p {
 h2 {
   font-size: 40px; 
   color: #6dbdff;
-  font-family: 'Merriweather', serif;
+  font-family: 'fredoka', serif;
   font-weight: 1000;
   letter-spacing: 1px;
   padding: 20px;
@@ -31,14 +38,14 @@ h2 {
   border-radius: 20px;
 }
 
-p {
-  max-width: 750px;
-  margin: 15px auto;
-  line-height: 1.6;
-  font-size: 18px;
-  color: #000000;
-  font-weight: bold;
-}
+ p {
+   max-width: 850px;
+   margin: 20px auto;
+   line-height: 100px;
+   font-size: 100px;
+   font-weight: 450; 
+   color: #222;
+        }
 
 .hero {
   padding-top: 40px;
@@ -166,12 +173,10 @@ document.getElementById("form").addEventListener("submit", async (e) => {
   }
 
   try {
-    // 1. Identifica onde o site está rodando e define o endereço base do servidor
     const URL_BASE = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
       ? 'http://localhost:3000'
-      : 'https://fixly-o7l5.onrender.com'; // Removida a barra do final para não duplicar na rota
+      : 'https://fixly-o7l5.onrender.com';
 
-    // 2. Faz a requisição usando a variável dinâmica
     const resposta = await fetch(`${URL_BASE}/auth/register`, {
       method: "POST",
       headers: {
@@ -185,9 +190,8 @@ document.getElementById("form").addEventListener("submit", async (e) => {
     if (resposta.ok) {
       alert(dados.msg || "Cadastro realizado com sucesso!");
       document.getElementById("form").reset();
-      window.location.href = "/login"; // Redireciona para o login
+      window.location.href = "/login";
     } else {
-      // Exibe a mensagem de erro específica vinda do servidor (ex: "Username já existe")
       alert(dados.msg || "Erro ao realizar o cadastro.");
     }
 

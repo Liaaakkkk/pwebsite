@@ -1,15 +1,21 @@
 <%- include('partials/header', { title: 'Meu Perfil' }) %>
 
 <style>
-  body {
-    background: linear-gradient(180deg, #74b9ff 0%, #dfefff 60%, #ffffff 100%);
-    background-attachment: fixed;
-    min-height: 100vh;
-    margin: 0;
-    padding: 0;
-    font-family: sans-serif;
-  }
-
+ body {
+  background-image: url('/images/fundoo.png') !important;
+  background-size: cover !important;
+  background-position: top center !important;
+  background-repeat: no-repeat !important;
+  background-attachment: fixed !important;
+  min-height: 100vh !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  font-family: 'fredoka', serif;
+}
+.hero {
+    min-height: auto;
+    padding-top: 90px;
+}
   .perfil-container {
     background: rgba(255, 255, 255, 0.9);
     max-width: 550px;
